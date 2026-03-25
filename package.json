@@ -1,6 +1,6 @@
 {
   "name": "react-stateshape",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A shared state management and routing lib for React apps",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
