@@ -1,4 +1,4 @@
-import { createURLSchema } from "url-shape";
+import { createURLBuilder } from "url-shape";
 import { z } from "zod";
 import { A, useRoute } from "../../../index.ts";
 
@@ -8,7 +8,7 @@ import { A, useRoute } from "../../../index.ts";
 // Get a typed URL builder `url()` based on a URL schema.
 // A schema can cover the entire app or its portion, allowing for incremental
 // or partial adoption of type-safe routing.
-const { url } = createURLSchema({
+const url = createURLBuilder({
   "/sections/:id": z.object({
     // URL path placeholder parameters
     params: z.object({

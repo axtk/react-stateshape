@@ -1,4 +1,4 @@
-import { createURLSchema } from "url-shape";
+import { createURLBuilder } from "url-shape";
 import { z } from "zod";
 import { A, useRoute } from "../../../index.ts";
 
@@ -9,7 +9,7 @@ const sectionParams = z.object({
 // Get a type-aware URL builder `url()` based on a URL schema.
 // A schema can cover the entire app or its portion, allowing for
 // incremental or partial adoption of type-safe routing.
-const { url } = createURLSchema({
+const url = createURLBuilder({
   "/": z.object({}),
   "/sections/:sectionId": z.object({
     params: sectionParams,

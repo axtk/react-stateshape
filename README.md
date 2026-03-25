@@ -277,11 +277,11 @@ let [state, setState] = useRouteState("/");
 Optionally, more specific type-aware parsing of URL parameters can be achieved by replacing string and RegExp URL patterns with URL patterns produced by a schema-based URL builder, like with `url-shape` and `zod` or a [similar tool](https://standardschema.dev/schema#what-schema-libraries-implement-the-spec):
 
 ```ts
-import { createURLSchema } from "url-shape";
+import { createURLBuilder } from "url-shape";
 import { z } from "zod"; // Or another Standard Schema-compliant lib
 
 // Get a type-aware URL builder `url()` based on a URL schema
-export const { url } = createURLSchema({
+export const url = createURLBuilder({
   "/sections/:id": z.object({
     // URL path placeholder parameters
     params: z.object({ id: z.coerce.number() }),
@@ -325,11 +325,14 @@ declare module "react-stateshape" {
 All routes are handled independently, so type-safe nested routes don't require special handling and don't maintain implicit relations with their parent routes. It also means that nested routes don't inherit their parent route parameters by default. Relations between routes (also beyond the direct inheritance of parameters) can be pretty straightforwardly defined on the URL schema level without imposing implicit constraints, which could be hard to work around.
 
 ```ts
+import { createURLBuilder } from "url-shape";
+import { z } from "zod";
+
 const sectionParams = z.object({
   sectionId: z.coerce.number(),
 });
 
-export const { url } = createURLSchema({
+export const url = createURLBuilder({
   "/sections/:sectionId": z.object({
     params: sectionParams,
   }),
