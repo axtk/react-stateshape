@@ -5,6 +5,11 @@ html {
 body {
   margin: 0;
 }
+a[data-active] {
+  color: inherit;
+  text-decoration: none;
+  pointer-events: none;
+}
 header {
   background: lavender;
   padding: 1em;
