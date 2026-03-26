@@ -34,7 +34,7 @@ export function useExternalState<
   event?: E,
 ): [T, SetExternalStateValue<T, P>] {
   if (!isState<T, P>(state))
-    throw new Error("'state' is not an instance of PortableState");
+    throw new TypeError("'state' is not an instance of State");
 
   let [, setRevision] = useState(-1);
 
