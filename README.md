@@ -183,6 +183,8 @@ route.navigate({ href: "/intro", history: "replace", scroll: "off" });
 
 Using HTML link attributes (including the `data-` attributes) as SPA link component props makes link components easily interchangeable with HTML links and understandable without prior knowledge.
 
+⬥ Link components also automatically receive the `data-active="true"` prop whenever their `href` prop matches the current URL, which can be used for additional styling.
+
 ⬥ Use the optional `callback` parameter of `useRoute(callback?)` for more fine-grained control over the component rendering in response to URL changes. This callback receives the `render` function as a parameter that should be called at some point. Use cases for this render callback include, for example, activating animated view transitions ([example](https://codesandbox.io/p/sandbox/w4q95n?file=%252Fsrc%252FApp.tsx)) or (less likely in regular circumstances) skipping re-renders for certain URL changes.
 
 ## useNavigationStart / useNavigationComplete

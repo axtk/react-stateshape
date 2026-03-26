@@ -1,15 +1,8 @@
 import type { AreaProps } from "./types/AreaProps.ts";
-import { useLinkClick } from "./useLinkClick.ts";
+import { useLinkProps } from "./useLinkProps.ts";
 
 export const Area = ({ alt, ...props }: AreaProps) => {
-  let handleClick = useLinkClick(props);
+  let updatedProps = useLinkProps(props);
 
-  return (
-    <area
-      {...props}
-      href={String(props.href)}
-      onClick={handleClick}
-      alt={alt}
-    />
-  );
+  return <area {...updatedProps} alt={alt} />;
 };

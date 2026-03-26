@@ -1,12 +1,8 @@
 import type { AProps } from "./types/AProps.ts";
-import { useLinkClick } from "./useLinkClick.ts";
+import { useLinkProps } from "./useLinkProps.ts";
 
 export const A = ({ children, ...props }: AProps) => {
-  let handleClick = useLinkClick(props);
+  let updatedProps = useLinkProps(props);
 
-  return (
-    <a {...props} href={String(props.href)} onClick={handleClick}>
-      {children}
-    </a>
-  );
+  return <a {...updatedProps}>{children}</a>;
 };

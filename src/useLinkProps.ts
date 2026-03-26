@@ -1,17 +1,16 @@
 import {
   type MouseEvent as ReactMouseEvent,
   useCallback,
-  useContext,
 } from "react";
 import { getNavigationOptions, isRouteEvent } from "stateshape";
-import { RouteContext } from "./RouteContext.ts";
 import type { AProps } from "./types/AProps.ts";
 import type { AreaProps } from "./types/AreaProps.ts";
+import { useRoute } from "./useRoute.ts";
 
-export function useLinkClick({ target, onClick }: AProps | AreaProps) {
-  let route = useContext(RouteContext);
+export function useLinkProps<T extends AProps | AreaProps>({ href, target, onClick, ...props }: T) {
+  let { at, route } = useRoute();
 
-  return useCallback(
+  let handleClick = useCallback(
     (event: ReactMouseEvent<HTMLAnchorElement & HTMLAreaElement>) => {
       onClick?.(event);
 
@@ -26,4 +25,12 @@ export function useLinkClick({ target, onClick }: AProps | AreaProps) {
     },
     [route, target, onClick],
   );
+
+  return {
+    ...props,
+    href: href && String(href),
+    target,
+    onClick: handleClick,
+    "data-active": at(href, true),
+  };
 }
