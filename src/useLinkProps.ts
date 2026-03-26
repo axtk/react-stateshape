@@ -1,13 +1,15 @@
-import {
-  type MouseEvent as ReactMouseEvent,
-  useCallback,
-} from "react";
+import { type MouseEvent as ReactMouseEvent, useCallback } from "react";
 import { getNavigationOptions, isRouteEvent } from "stateshape";
 import type { AProps } from "./types/AProps.ts";
 import type { AreaProps } from "./types/AreaProps.ts";
 import { useRoute } from "./useRoute.ts";
 
-export function useLinkProps<T extends AProps | AreaProps>({ href, target, onClick, ...props }: T) {
+export function useLinkProps<T extends AProps | AreaProps>({
+  href,
+  target,
+  onClick,
+  ...props
+}: T) {
   let { at, route } = useRoute();
 
   let handleClick = useCallback(
