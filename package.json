@@ -40,10 +40,10 @@
     "auxsrv": "^0.3.11",
     "immer": "^11.1.4",
     "react-dom": "^19.2.4",
-    "url-shape": "^2.0.2",
+    "url-shape": "^2.0.3",
     "zod": "^4.3.6"
   },
   "dependencies": {
-    "stateshape": "^0.2.6"
+    "stateshape": "^0.2.7"
   }
 }
