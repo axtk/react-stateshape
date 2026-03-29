@@ -419,9 +419,11 @@ fetchItems({ delay: 500 }) // in milliseconds
 
 ### Custom rejection handler
 
-Allow the trackable action to reject explicitly with `{ throws: true }` as the last parameter, along with exposing `error` returned from `useTransientState` that goes by default.
+Allow the trackable action to reject explicitly with `{ throws: true }` as the last parameter, along with exposing `state.error` returned from `useTransientState` that goes by default.
 
 ```js
+let [state, fetchItems] = useTransientState(fetchItemsOriginal);
+
 fetchItems({ throws: true }).catch(handleError)
 ```
 
