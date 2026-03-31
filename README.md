@@ -2,6 +2,30 @@
 
 A shared state management and routing lib for React apps. Under the hood, routing is shared state management, too, with the shared data being the URL.
 
+<details>
+<summary>Why think of another state management lib?</summary><br>
+
+With several options available, state management in React apps still feels more cumbersome than it could be. To make it as easy to use as React's local state, a shared state management lib should cover the following points:
+
+(1) having a simple API with a minimal set of introduced entities,<br>
+(2) requiring minimal changes to move local state to shared state,<br>
+(3) supporting straightforward SSR without workaround APIs.
+
+While focusing on other aspects, the popular approaches to state management seem to fail at least at one of those points:
+
+```
+Redux Toolkit  (1) ❌  (2) ❌  (3) ❌
+Zustand            ✔️      ❌      ❌
+Jotai              ✔️      ✔️      ❌
+MobX               ❌      ❌      ❌
+```
+
+This lib's `useExternalState()` hook is an attempt to come up with a straightforward useState-like approach to shared state management by focusing on the three points listed above.
+
+</details>
+
+---
+
 Contents: [useExternalState](#useexternalstate) · [useRoute](#useroute) · [useNavigationStart / useNavigationComplete](#usenavigationstart--usenavigationcomplete) · [useRouteState](#useroutestate) · [Type-safe routes](#type-safe-routes) · [useTransientState](#usetransientstate) · [Annotated examples](#annotated-examples) · [Internals](#internals)
 
 ## useExternalState
