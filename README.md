@@ -20,7 +20,7 @@ Jotai              ✔️      ✔️      ❌
 MobX               ❌      ❌      ❌
 ```
 
-This lib's `useExternalState()` hook is an attempt to come up with a straightforward useState-like approach to shared state management by focusing on the three points listed above.
+This lib's `useExternalState()` hook is an attempt to come up with a straightforward useState-like approach to shared state management by focusing on the three points listed above. The lib's other hooks are built around the common practical use cases for `useExternalState()`.
 
 </details>
 
