@@ -17,9 +17,7 @@ let Counter = () => {
 };
 
 let ResetButton = () => {
-  // This component doesn't make use of the state value, so we are
-  // opting out from subscription to its updates by adding `false`
-  let [, setCounter] = useExternalState(useContext(AppContext), false);
+  let [, setCounter] = useExternalState(useContext(AppContext));
 
   let handleClick = () => {
     setCounter(0);

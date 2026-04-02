@@ -52,7 +52,7 @@ Move local state to the full-fledged shared state with minimal paradigm shift an
 
   let ResetButton = () => {
 -   let [, setCounter] = useState(0);
-+   let [, setCounter] = useExternalState(counterState, false);
++   let [, setCounter] = useExternalState(counterState);
 
     let handleClick = () => setCounter(0);
 
@@ -90,9 +90,7 @@ let App = () => (
 
 ### Filtering state updates
 
-⬥ Use the optional `false` parameter in `useExternalState(state, false)`, as in `ResetButton` above, to tell the hook not to subscribe the component to tracking the external state updates. The common use case for it is when a component makes use of the external state value setter without using the state value itself.
-
-⬥ Apart from setting the optional second parameter of `useExternalState(state, callback)` to a boolean value, use it as a render callback for more fine-grained control over component's re-renders in response to state changes:
+⬥ Use the optional second parameter of `useExternalState(state, callback)` as a render callback for fine-grained control over component's re-renders in response to state changes:
 
 ```js
 let itemState = new State({/* A map of `<id>: <item>` */});
@@ -108,6 +106,8 @@ let ItemCard = ({ id }) => {
   // ...
 };
 ```
+
+⬥ Use the optional `false` parameter in `useExternalState(state, false)` to tell the hook not to subscribe the component to tracking the external state updates altogether. A use case for it is when a component makes use of the external state value setter without using the state value itself. The `false` parameter could have been used in the `ResetButton` in the first example above, but in many cases with lightweight component renders it might be unnecessary, since React automatically skips updating the DOM when there are no changes.
 
 ### Integration with Immer
 

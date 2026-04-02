@@ -11,9 +11,7 @@ let Display = () => {
 };
 
 let PlusButton = () => {
-  // This component doesn't make use of the state value, so we are
-  // opting out from subscription to its updates by adding `false`
-  let [, setCounter] = useExternalState(useContext(AppContext), false);
+  let [, setCounter] = useExternalState(useContext(AppContext));
 
   let handleClick = () => {
     // Same as with setters from `useState()`

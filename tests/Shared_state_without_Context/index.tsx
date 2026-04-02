@@ -1,6 +1,5 @@
 import { createRoot } from "react-dom/client";
 import { State, useExternalState } from "../../index.ts";
-import "./index.css";
 
 let counterState = new State(0);
 // `new State(value)` can contain any kind of value,
@@ -18,9 +17,7 @@ let Counter = () => {
 };
 
 let ResetButton = () => {
-  // This component doesn't make use of the state value, so we are
-  // opting out from subscription to its updates by adding `false`
-  let [, setCounter] = useExternalState(counterState, false);
+  let [, setCounter] = useExternalState(counterState);
 
   let handleClick = () => {
     setCounter(0);
