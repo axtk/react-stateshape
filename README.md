@@ -39,27 +39,27 @@ Move local state to the full-fledged shared state with minimal paradigm shift an
 ```diff
 + import { State, useExternalState } from "react-stateshape";
 +
-+ let counterState = new State(0);
++ const counterState = new State(0);
 
-  let Counter = () => {
--   let [counter, setCounter] = useState(0);
-+   let [counter, setCounter] = useExternalState(counterState);
+  const Counter = () => {
+-   const [counter, setCounter] = useState(0);
++   const [counter, setCounter] = useExternalState(counterState);
 
-    let handleClick = () => setCounter((value) => value + 1);
+    const handleClick = () => setCounter((value) => value + 1);
 
     return <button onClick={handleClick}>+ {counter}</button>;
   };
 
-  let ResetButton = () => {
--   let [, setCounter] = useState(0);
-+   let [, setCounter] = useExternalState(counterState);
+  const ResetButton = () => {
+-   const [, setCounter] = useState(0);
++   const [, setCounter] = useExternalState(counterState);
 
-    let handleClick = () => setCounter(0);
+    const handleClick = () => setCounter(0);
 
     return <button onClick={handleClick}>×</button>;
   };
 
-  let App = () => <><Counter/>{" "}<ResetButton/></>;
+  const App = () => <><Counter/>{" "}<ResetButton/></>;
 ```
 
 ### Sharing state via Context
@@ -67,17 +67,17 @@ Move local state to the full-fledged shared state with minimal paradigm shift an
 With SSR, it's common practice to put shared values into React Context rather than module-level variables to avoid cross-request data sharing. The same applies to external state. Provide external state to multiple components via React Context like any data in a React app:
 
 ```diff
-- let counterState = new State(0);
-+ let AppContext = createContext(new State(0));
+- const counterState = new State(0);
++ const AppContext = createContext(new State(0));
 ```
 
 ```diff
-- let [counter, setCounter] = useExternalState(counterState);
-+ let [counter, setCounter] = useExternalState(useContext(AppContext));
+- const [counter, setCounter] = useExternalState(counterState);
++ const [counter, setCounter] = useExternalState(useContext(AppContext));
 ```
 
 ```jsx
-let App = () => (
+const App = () => (
   <AppContext.Provider value={new State(42)}>
     <PlusButton/>{" "}<Display/>
   </AppContext.Provider>
@@ -93,11 +93,11 @@ let App = () => (
 ⬥ Use the optional second parameter of `useExternalState(state, callback)` as a render callback for fine-grained control over component's re-renders in response to state changes:
 
 ```js
-let itemState = new State({/* A map of `<id>: <item>` */});
+const itemState = new State({/* A map of `<id>: <item>` */});
 
 // Renders a specific item from `itemState`
-let ItemCard = ({ id }) => {
-  let [items, setItems] = useExternalState(itemState, (render, { current, previous }) => {
+const ItemCard = ({ id }) => {
+  const [items, setItems] = useExternalState(itemState, (render, { current, previous }) => {
     // Assuming that the items have a `timestamp` property, re-render
     // `ItemCard` only if the relevant item's `timestamp` has increased
     if (current[id].timestamp > previous[id].timestamp) render();
@@ -120,7 +120,7 @@ Replace `State` with `PersistentState` as shown below to get the state data sync
 ```js
 import { PersistentState } from "react-stateshape";
 
-let counterState = new PersistentState(0, { key: "counter" });
+const counterState = new PersistentState(0, { key: "counter" });
 ```
 
 ⬥ Set `options.session` to `true` in `new PersistentState(value, options)` to use `sessionStorage`.
@@ -142,8 +142,8 @@ URL-based rendering with `at(url, x, y)` shown below works similarly to conditio
 ```jsx
 import { useRoute } from "react-stateshape";
 
-let App = () => {
-  let { at } = useRoute();
+const App = () => {
+  const { at } = useRoute();
 
   return (
     <header className={at("/", "full", "compact")}>
@@ -168,10 +168,10 @@ The SPA navigation API is largely aligned with the similar built-in APIs:
 ```diff
 + import { A, useRoute } from "react-stateshape";
 
-  let UserNav = ({ signedIn }) => {
-+   let { route } = useRoute();
+  const UserNav = ({ signedIn }) => {
++   const { route } = useRoute();
 
-    let handleClick = () => {
+    const handleClick = () => {
 -     window.location.href = signedIn ? "/profile" : "/login";
 +     route.href = signedIn ? "/profile" : "/login";
     };
@@ -224,11 +224,11 @@ function setTitle({ href }) {
   document.title = href === "/intro" ? "Intro" : "App";
 }
 
-let App = () => {
-  let { route } = useRoute();
-  let [hasUnsavedChanges, setUnsavedChanges] = useState(false);
+const App = () => {
+  const { route } = useRoute();
+  const [hasUnsavedChanges, setUnsavedChanges] = useState(false);
 
-  let handleNavigationStart = useCallback(({ href }) => {
+  const handleNavigationStart = useCallback(({ href }) => {
     if (hasUnsavedChanges)
       return false; // Preventing navigation
 
@@ -256,11 +256,11 @@ Use this hook to manage URL parameters as state in a `useState`-like manner. Use
 ```diff
 + import { useRouteState } from "react-stateshape";
 
-  let App = () => {
--   let [{ coords }, setState] = useState({ coords: { x: 0, y: 0 } });
-+   let [{ query }, setState] = useRouteState("/");
+  const App = () => {
+-   const [{ coords }, setState] = useState({ coords: { x: 0, y: 0 } });
++   const [{ query }, setState] = useRouteState("/");
 
-    let setPosition = () => {
+    const setPosition = () => {
       setState(state => ({
         ...state,
 -       coords: {
@@ -291,13 +291,13 @@ Use this hook to manage URL parameters as state in a `useState`-like manner. Use
 When it comes to accessing parameters extracted from a URL pattern, by default the parameters are typed as `Record<string, string | undefined>`, which quite literally represents a map containing portions of a string URL.
 
 ```tsx
-let { at } = useRoute();
+const { at } = useRoute();
 
 at(/^\/sections\/(?<id>\d+)\/?$/, ({ params }) => <Section id={params.id}/>)
                                   // ^ Record<string, string | undefined>
 
-let [state, setState] = useRouteState("/");
-  // ^ { query: Record<string, string | undefined> }
+const [state, setState] = useRouteState("/");
+    // ^ { query: Record<string, string | undefined> }
 ```
 
 Optionally, more specific type-aware parsing of URL parameters can be achieved by replacing string and RegExp URL patterns with URL patterns produced by a schema-based URL builder, like with `url-shape` and `zod` or a [similar tool](https://standardschema.dev/schema#what-schema-libraries-implement-the-spec):
@@ -322,13 +322,13 @@ export const url = createURLBuilder({
 The type-aware URL builder `url(pattern, options?)` provides hints about the types of the parsed URL parameters and helps avoid typos and type mismatches:
 
 ```tsx
-let { at } = useRoute();
+const { at } = useRoute();
 
 at(url("/sections/:id"), ({ params }) => <Section id={params.id}/>)
                          // ^ { id: number }
 
-let [state, setState] = useRouteState(url("/"));
-  // ^ { query: { x: number, y: number } | undefined }
+const [state, setState] = useRouteState(url("/"));
+    // ^ { query?: { x: number, y: number } }
 
 <A href={url("/sections/:id", { id: 1 })}>Section 1</A>
                            // ^ { id: number }
@@ -382,9 +382,9 @@ In the example below, storing and rendering the essential app data (`items`) and
 - import { fetchItems } from "./fetchItems.js";
 + import { fetchItems as fetchItemsOriginal } from "./fetchItems.js";
 
-  export let ItemList = () => {
-    let [items, setItems] = useState([]);
-+   let [state, fetchItems] = useTransientState("items", fetchItemsOriginal);
+  export const ItemList = () => {
+    const [items, setItems] = useState([]);
++   const [state, fetchItems] = useTransientState("items", fetchItemsOriginal);
 
     useEffect(() => {
       // The fetched items can be stored with any approach to app state
@@ -401,9 +401,9 @@ In the example below, storing and rendering the essential app data (`items`) and
 ```diff
 + import { useTransientState } from "react-stateshape";
 
-- export let Status = ({ state }) => {
-+ export let Status = () => {
-+   let [state] = useTransientState("items");
+- export const Status = ({ state }) => {
++ export const Status = () => {
++   const [state] = useTransientState("items");
 
     if (state.initial) return null;
     if (state.pending) return <>Busy</>;
@@ -424,8 +424,8 @@ Use case: background actions or optimistic updates.
 Set `{ silent: true }` as the last parameter of the trackable action returned from the `useTransientState` hook to prevent the `pending` property from switching to `true` in the pending state.
 
 ```js
-let [state, fetchItems] = useTransientState(fetchItemsOriginal);
-  // ^ `state.pending` remains `false` in the silent mode
+const [state, fetchItems] = useTransientState(fetchItemsOriginal);
+    // ^ `state.pending` remains `false` in the silent mode
 
 fetchItems({ silent: true })
 ```
@@ -435,8 +435,8 @@ fetchItems({ silent: true })
 Use case: Avoid flashing a process indicator when the action is likely to complete in a short while by delaying the pending state.
 
 ```js
-let [state, fetchItems] = useTransientState(fetchItemsOriginal);
-  // ^ `state.pending` remains `false` during the delay
+const [state, fetchItems] = useTransientState(fetchItemsOriginal);
+    // ^ `state.pending` remains `false` during the delay
 
 fetchItems({ delay: 500 }) // in milliseconds
 ```
@@ -446,7 +446,7 @@ fetchItems({ delay: 500 }) // in milliseconds
 Allow the trackable action to reject explicitly with `{ throws: true }` as the last parameter, along with exposing `state.error` returned from `useTransientState` that goes by default.
 
 ```js
-let [state, fetchItems] = useTransientState(fetchItemsOriginal);
+const [state, fetchItems] = useTransientState(fetchItemsOriginal);
 
 fetchItems({ throws: true }).catch(handleError)
 ```
@@ -466,7 +466,7 @@ import { TransientStateProvider } from "react-stateshape";
 Use the provider to set up a specific initial async action state when required:
 
 ```jsx
-let initialState = {
+const initialState = {
   "fetch-items": { initial: false, pending: true },
 };
 
