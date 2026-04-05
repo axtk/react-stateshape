@@ -44,6 +44,6 @@
     "zod": "^4.3.6"
   },
   "dependencies": {
-    "stateshape": "^0.2.10"
+    "stateshape": "^0.2.11"
   }
 }
