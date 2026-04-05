@@ -10,9 +10,9 @@ export type ShapeProps = {
 };
 
 export const Shape = (props: ShapeProps) => {
-  let x = toNumber(props.x, 50);
-  let y = toNumber(props.y, 50);
-  let r = toNumber(props.r, 30);
+  const x = toNumber(props.x, 50);
+  const y = toNumber(props.y, 50);
+  const r = toNumber(props.r, 30);
 
   return (
     <div className="shape">

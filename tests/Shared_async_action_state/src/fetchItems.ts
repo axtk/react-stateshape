@@ -3,7 +3,7 @@ function randomInt(min: number, max: number) {
 }
 
 function randomColor() {
-  let rgb = [randomInt(0, 255), randomInt(0, 255), randomInt(0, 255)];
+  const rgb = [randomInt(0, 255), randomInt(0, 255), randomInt(0, 255)];
 
   return `rgba(${rgb.join()})`;
 }
@@ -15,7 +15,7 @@ export type Item = {
 };
 
 function createItems(): Item[] {
-  let items = [];
+  const items = [];
 
   for (let i = 0; i < 5; i++)
     items.push({

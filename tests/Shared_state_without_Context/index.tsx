@@ -1,14 +1,14 @@
 import { createRoot } from "react-dom/client";
 import { State, useExternalState } from "../../index.ts";
 
-let counterState = new State(0);
+const counterState = new State(0);
 // `new State(value)` can contain any kind of value,
 // of primitive or nonprimitive type
 
-let Counter = () => {
-  let [counter, setCounter] = useExternalState(counterState);
+const Counter = () => {
+  const [counter, setCounter] = useExternalState(counterState);
 
-  let handleClick = () => {
+  const handleClick = () => {
     // Same as with setters from `useState()`
     setCounter((value) => value + 1);
   };
@@ -16,17 +16,17 @@ let Counter = () => {
   return <button onClick={handleClick}>+ {counter}</button>;
 };
 
-let ResetButton = () => {
-  let [, setCounter] = useExternalState(counterState);
+const ResetButton = () => {
+  const [, setCounter] = useExternalState(counterState);
 
-  let handleClick = () => {
+  const handleClick = () => {
     setCounter(0);
   };
 
   return <button onClick={handleClick}>×</button>;
 };
 
-let App = () => (
+const App = () => (
   <>
     <Counter /> <ResetButton />
   </>

@@ -18,7 +18,7 @@ function renderViewTransition(render: () => void) {
 }
 
 export const App = () => {
-  let { at } = useRoute(renderViewTransition);
+  const { at } = useRoute(renderViewTransition);
 
   return (
     <>

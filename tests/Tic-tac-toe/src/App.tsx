@@ -47,15 +47,15 @@ function getGameState(state: BoardState): GameState {
   return { value: "playing" };
 }
 
-let boardState = new State<BoardState>({ moves: [], lastMoveIndex: -1 });
+const boardState = new State<BoardState>({ moves: [], lastMoveIndex: -1 });
 
-let Cell = ({ index, selected }: { index: number; selected?: boolean }) => {
-  let [state, setState] = useExternalState(boardState);
+const Cell = ({ index, selected }: { index: number; selected?: boolean }) => {
+  const [state, setState] = useExternalState(boardState);
 
   // Checking whether the cell index is already among the past moves
-  let moveIndex = state.moves.lastIndexOf(index, state.lastMoveIndex);
+  const moveIndex = state.moves.lastIndexOf(index, state.lastMoveIndex);
 
-  let handleClick = () => {
+  const handleClick = () => {
     if (moveIndex === -1)
       setState(({ moves, lastMoveIndex }) => ({
         moves: [...moves.slice(0, lastMoveIndex + 1), index],
@@ -70,11 +70,11 @@ let Cell = ({ index, selected }: { index: number; selected?: boolean }) => {
   );
 };
 
-let indices = Array.from({ length: 9 }).fill(0);
+const indices = Array.from({ length: 9 }).fill(0);
 
-let Board = () => {
-  let [state] = useExternalState(boardState);
-  let { value: status, win } = getGameState(state);
+const Board = () => {
+  const [state] = useExternalState(boardState);
+  const { value: status, win } = getGameState(state);
 
   return (
     <fieldset className="board" disabled={status !== "playing"}>
@@ -85,10 +85,10 @@ let Board = () => {
   );
 };
 
-let History = () => {
-  let [state, setState] = useExternalState(boardState);
+const History = () => {
+  const [state, setState] = useExternalState(boardState);
 
-  let rollbackTo = (moveIndex: number) => {
+  const rollbackTo = (moveIndex: number) => {
     setState((state) => ({
       ...state,
       lastMoveIndex: moveIndex,
@@ -111,10 +111,10 @@ let History = () => {
   );
 };
 
-let Controls = () => {
-  let [, setState] = useExternalState(boardState, false);
+const Controls = () => {
+  const [, setState] = useExternalState(boardState, false);
 
-  let restart = () => {
+  const restart = () => {
     setState({ moves: [], lastMoveIndex: -1 });
   };
 
@@ -125,13 +125,13 @@ let Controls = () => {
   );
 };
 
-let StatusBar = () => {
-  let [state] = useExternalState(boardState);
+const StatusBar = () => {
+  const [state] = useExternalState(boardState);
 
   return <p className="status">{getGameState(state).value}</p>;
 };
 
-export let App = () => (
+export const App = () => (
   <>
     <Board />
     <StatusBar />

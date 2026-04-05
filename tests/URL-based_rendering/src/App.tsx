@@ -16,7 +16,7 @@ const Section = ({ id }: { id: string | undefined }) => (
 );
 
 export const App = () => {
-  let { at } = useRoute();
+  const { at } = useRoute();
 
   return (
     <>

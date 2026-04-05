@@ -1,7 +1,7 @@
 import { A, useRoute } from "../../../index.ts";
 
 export const App = () => {
-  let { at } = useRoute();
+  const { at } = useRoute();
 
   return (
     <>

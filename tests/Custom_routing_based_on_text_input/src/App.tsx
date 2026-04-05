@@ -2,7 +2,7 @@ import { A, useRoute } from "../../../index.ts";
 import { Browser } from "./Browser.tsx";
 
 const Content = () => {
-  let { at } = useRoute();
+  const { at } = useRoute();
 
   return (
     <>

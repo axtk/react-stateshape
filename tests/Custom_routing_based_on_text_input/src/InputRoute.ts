@@ -13,8 +13,8 @@ export class InputRoute extends Route {
     this.inputId = inputId;
   }
   _init() {
-    let handleInput = (event: KeyboardEvent) => {
-      let element = event.target;
+    const handleInput = (event: KeyboardEvent) => {
+      const element = event.target;
 
       if (
         element instanceof HTMLInputElement &&
@@ -38,11 +38,11 @@ export class InputRoute extends Route {
     return document.querySelector<HTMLInputElement>(`#${this.inputId}`);
   }
   _transition(options?: NavigationOptions) {
-    let href = options?.href;
+    const href = options?.href;
 
     if (typeof window === "undefined" || href === undefined) return;
 
-    let input = this._getElement();
+    const input = this._getElement();
 
     if (input && input.value !== href) input.value = href;
   }

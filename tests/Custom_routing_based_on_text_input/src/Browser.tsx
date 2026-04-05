@@ -14,9 +14,9 @@ export const Browser = ({
   initialLocation = "/",
   autoFocus,
 }: BrowserProps) => {
-  let inputId = useId();
+  const inputId = useId();
 
-  let route = useMemo(
+  const route = useMemo(
     () => new InputRoute(inputId, initialLocation),
     [inputId, initialLocation],
   );

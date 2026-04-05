@@ -32,7 +32,7 @@ const Section = ({ id }: { id: number }) => (
 );
 
 export const App = () => {
-  let { at } = useRoute();
+  const { at } = useRoute();
 
   return (
     // at(url, x, y) acts similarly to `atURL ? x : y`.

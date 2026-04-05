@@ -4,9 +4,9 @@ import { Shape } from "./Shape.tsx";
 export const App = () => {
   // Use `useRouteState()` to manipulate the URL in a
   // `useState()`-like manner.
-  let [{ query }, setState] = useRouteState("/");
+  const [{ query }, setState] = useRouteState("/");
 
-  let setPosition = () => {
+  const setPosition = () => {
     setState((state) => ({
       ...state,
       query: {
@@ -17,7 +17,7 @@ export const App = () => {
     }));
   };
 
-  let resetPosition = () => {
+  const resetPosition = () => {
     setState({});
   };
 

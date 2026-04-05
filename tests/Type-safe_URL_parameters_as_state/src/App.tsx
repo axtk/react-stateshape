@@ -8,9 +8,9 @@ import {
 import { ShapeSection } from "./ShapeSection.tsx";
 
 export const App = () => {
-  let { route, at } = useRoute();
+  const { route, at } = useRoute();
 
-  let initialRedirect = useCallback(
+  const initialRedirect = useCallback(
     ({ href }: NavigationOptions) => {
       if (href === "/") {
         route.assign("/shapes/1");

@@ -4,7 +4,7 @@ import { Intro } from "./Intro.tsx";
 import { ItemList } from "./ItemList.lazy.ts";
 
 export const App = () => {
-  let { at } = useRoute();
+  const { at } = useRoute();
 
   return (
     <>

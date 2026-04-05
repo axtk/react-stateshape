@@ -29,9 +29,9 @@ export const ShapeSection = () => {
   // The typed URL builder like `url()` allows to manipulate it with more
   // type safety, so that the `params` and `query` properties are in line
   // with the URL schema defined above.
-  let [{ params, query }, setState] = useRouteState(url("/shapes/:id"));
+  const [{ params, query }, setState] = useRouteState(url("/shapes/:id"));
 
-  let setPosition = () => {
+  const setPosition = () => {
     setState((state) => ({
       ...state,
       query: {
@@ -42,7 +42,7 @@ export const ShapeSection = () => {
     }));
   };
 
-  let resetPosition = () => {
+  const resetPosition = () => {
     setState({ params });
   };
 

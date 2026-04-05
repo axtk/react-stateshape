@@ -1,7 +1,7 @@
 import { ItemList } from "./ItemList.tsx";
 import { Status } from "./Status.tsx";
 
-export let App = () => (
+export const App = () => (
   <>
     <p>
       Status: <Status />

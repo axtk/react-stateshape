@@ -30,7 +30,7 @@ const url = createURLBuilder({
 const sectionCount = 3;
 const sectionStoryCount = 3;
 
-let Nav = () => (
+const Nav = () => (
   <nav>
     <ul>
       <li>
@@ -64,8 +64,8 @@ let Nav = () => (
   </nav>
 );
 
-export let App = () => {
-  let { at } = useRoute();
+export const App = () => {
+  const { at } = useRoute();
 
   return (
     <>

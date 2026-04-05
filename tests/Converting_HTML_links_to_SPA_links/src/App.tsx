@@ -9,7 +9,7 @@ const htmlContent =
 // can help: it makes plain HTML links act like SPA links.
 
 const Intro = () => {
-  let containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   // Convert HTML links inside the specified container to SPA links.
   // To further narrow down the relevant links, a selector can be passed as

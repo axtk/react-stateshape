@@ -29,7 +29,7 @@ const routes = {
 const knownRoutes = Object.values(routes);
 
 export const App = () => {
-  let { at } = useRoute();
+  const { at } = useRoute();
 
   return (
     <>
