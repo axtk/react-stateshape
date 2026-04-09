@@ -1,5 +1,5 @@
 {
-  "name": "react-stateshape",
+  "name": "react-bridgestate",
   "version": "0.2.13",
   "description": "A shared state management and routing lib for React apps",
   "main": "./dist/index.cjs",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axtk/react-stateshape.git"
+    "url": "git+https://github.com/axtk/react-bridgestate.git"
   },
   "keywords": [
     "state",
@@ -44,6 +44,6 @@
     "zod": "^4.3.6"
   },
   "dependencies": {
-    "stateshape": "^0.2.11"
+    "bridgestate": "^0.3.0"
   }
 }

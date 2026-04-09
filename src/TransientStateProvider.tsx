@@ -1,5 +1,5 @@
 import { type ReactNode, useMemo, useRef } from "react";
-import { State } from "stateshape";
+import { State } from "bridgestate";
 import { TransientStateContext } from "./TransientStateContext.ts";
 import type { TransientState } from "./types/TransientState.ts";
 

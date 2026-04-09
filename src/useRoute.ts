@@ -1,5 +1,5 @@
 import { useContext, useMemo } from "react";
-import type { NavigationOptions } from "stateshape";
+import type { NavigationOptions } from "bridgestate";
 import { RouteContext } from "./RouteContext.ts";
 import type { RenderCallback } from "./types/RenderCallback.ts";
 import { useExternalState } from "./useExternalState.ts";

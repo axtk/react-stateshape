@@ -1,5 +1,5 @@
 import { useCallback, useContext, useMemo, useRef, useState } from "react";
-import { isState, State } from "stateshape";
+import { isState, State } from "bridgestate";
 import { TransientStateContext } from "./TransientStateContext.ts";
 import type { TransientState } from "./types/TransientState.ts";
 import {
