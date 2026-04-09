@@ -1,5 +1,5 @@
-import { type RefObject, useContext, useEffect } from "react";
 import type { ContainerElement, Route } from "bridgestate";
+import { type RefObject, useContext, useEffect } from "react";
 import { RouteContext } from "./RouteContext.ts";
 
 /**

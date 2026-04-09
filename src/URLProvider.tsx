@@ -1,5 +1,5 @@
-import { type ReactNode, useEffect, useMemo } from "react";
 import { URLState } from "bridgestate";
+import { type ReactNode, useEffect, useMemo } from "react";
 import { URLContext } from "./URLContext.ts";
 
 export type URLProviderProps = {

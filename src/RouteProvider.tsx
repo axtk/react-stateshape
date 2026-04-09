@@ -1,5 +1,5 @@
-import { type ReactNode, useEffect, useMemo } from "react";
 import { Route } from "bridgestate";
+import { type ReactNode, useEffect, useMemo } from "react";
 import { RouteContext } from "./RouteContext.ts";
 
 export type RouteProviderProps = {

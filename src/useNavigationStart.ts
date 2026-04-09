@@ -1,5 +1,5 @@
-import { useContext, useEffect } from "react";
 import type { EventCallback, NavigationOptions } from "bridgestate";
+import { useContext, useEffect } from "react";
 import { RouteContext } from "./RouteContext.ts";
 
 export function useNavigationStart(callback: EventCallback<NavigationOptions>) {
