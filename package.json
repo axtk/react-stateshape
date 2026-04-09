@@ -1,6 +1,6 @@
 {
   "name": "react-bridgestate",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A shared state management and routing lib for React apps",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
