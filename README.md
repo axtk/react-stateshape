@@ -5,13 +5,13 @@ A shared state management and routing lib for React apps. Under the hood, routin
 <details>
 <summary>Why think of another state management lib?</summary><br>
 
-With several options available, state management in React apps still feels more cumbersome than it could be. To make it as easy to use as React's local state, a shared state management lib should cover the following points:
+With several options available, state management in React apps still feels more cumbersome than it could be. With the React's local state mental model in mind, we might expect that a shared state management lib—
 
-(1) having a simple API with a minimal set of introduced entities,<br>
-(2) requiring minimal changes to move local state to shared state,<br>
-(3) supporting straightforward SSR without workaround APIs.
+(1) has a simple API with a minimal set of introduced entities,<br>
+(2) requires minimal changes to move local state to shared state,<br>
+(3) supports straightforward SSR without workaround APIs.
 
-While focusing on other aspects, the popular approaches to state management seem to fail at least at one of those points:
+While focusing on other aspects, the popular approaches to state management seem to fail at least at one of those points (which is marked as `×` below):
 
 |   | (1) | (2) | (3) |
 |---|:---:|:---:|:---:|
@@ -205,7 +205,7 @@ route.navigate({ href: "/intro", history: "replace", scroll: "off" });
 <A href="/intro" data-spa="off">Intro</A>
 ```
 
-Using HTML link attributes (including the `data-` attributes) as SPA link component props makes link components easily interchangeable with HTML links and understandable without prior knowledge.
+Using HTML link attributes as SPA link component props makes link components easily interchangeable with HTML links and more familiar without prior knowledge.
 
 ⬥ Link components also automatically receive the `data-active="true"` prop whenever their `href` prop matches the current URL, which can be used for additional styling.
 
@@ -215,7 +215,7 @@ Using HTML link attributes (including the `data-` attributes) as SPA link compon
 
 These hooks set up optional actions to be done before and after a SPA navigation occurs respectively. Such intermediate actions are also known as routing middleware.
 
-Some common examples of what can be handled with middleware include redirecting to another URL, preventing navigation with unsaved user input, setting the page title based on the current URL:
+Some common examples of what can be handled with the routing middleware include redirecting to another URL, preventing navigation with unsaved user input, setting the page title based on the current URL:
 
 ```jsx
 import { useNavigationComplete, useNavigationStart } from "react-bridgestate";
@@ -348,7 +348,7 @@ declare module "react-bridgestate" {
 
 ### Nested routes
 
-All routes are handled independently, so type-safe nested routes don't require special handling and don't maintain implicit relations with their parent routes. It also means that nested routes don't inherit their parent route parameters by default. Relations between routes (also beyond the direct inheritance of parameters) can be pretty straightforwardly defined on the URL schema level without imposing implicit constraints, which could be hard to work around.
+All routes are handled independently, so type-safe nested routes don't require special handling and don't maintain implicit relations with their parent routes. It also means that nested routes don't inherit their parent route parameters by default. Relations between routes (also beyond the direct inheritance of parameters) can be pretty straightforwardly defined at the URL schema level without imposing implicit constraints, which could be hard to work around.
 
 ```ts
 import { createURLBuilder } from "url-shape";
