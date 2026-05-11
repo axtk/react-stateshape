@@ -62,8 +62,7 @@ export function useExternalState<
       resolvedCallback(render, payload as P[E]);
     });
 
-    if (state.revision !== initialStateRevision.current)
-      setRevision(Math.random());
+    if (state.revision !== initialStateRevision.current) render();
 
     return () => {
       unsubscribe();
