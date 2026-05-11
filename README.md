@@ -137,7 +137,7 @@ Use this hook for URL-based rendering and SPA navigation, which boil down to acc
 
 ### URL-based rendering
 
-URL-based rendering with `at(url, x, y)` shown below works similarly to conditional rendering with the ternary operator `atURL ? x : y`. It's equally applicable to props and components:
+URL-based rendering with `at(url, x, y?)` shown below works similarly to conditional rendering with the ternary operator `atURL ? x : y`. It's equally applicable to props and components:
 
 ```jsx
 import { useRoute } from "react-bridgestate";
@@ -156,6 +156,8 @@ const App = () => {
 ```
 
 ⬥ `params` in dynamic values (as in `({ params }) => <Section id={params.id}/>` above) contains the URL pattern's capturing groups.
+
+⬥ Use `at(url)` as a shorthand for `at(url, true, false)`. Example: `<Component isOpen={at("/")}/>`.
 
 ⬥ By default, `useRoute` makes use of the browser's URL, if it's available. Otherwise, use `<RouteProvider href={url}>` to set a specific URL value. Common use cases: SSR and tests. A less common use case: custom routing behavior, including custom non-URL-based routing ([example](https://codesandbox.io/p/sandbox/tykt44?file=%252Fsrc%252FApp.tsx)).
 
