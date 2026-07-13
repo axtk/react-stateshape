@@ -19,7 +19,7 @@ Apparently focusing on other aspects, **Redux Toolkit** and **MobX** don't fulfi
 
 With a useState-like API, **Jotai** is the closest match (points (1) and (2) fulfilled). Still, Jotai requires a workaround API, a special hook, to set up SSR<sup>[[3](https://jotai.org/docs/utilities/ssr)]</sup> (point (3) unmet). Also, subjectively, the Jotai's core `atom()` function with its elaborate capabilities is an overkill for state management that looks hard to tree-shake.
 
-The `useExternalState()` hook of `react-bridgestate` is an attempt to come up with a lightweight useState-like approach to shared state management by focusing on the three points listed above. The lib's other hooks are built around the common practical use cases for `useExternalState()`.
+The `useExternalState()` hook of `react-bridgestate` is an attempt to come up with a mostly self-explanatory lightweight useState-like approach to shared state management by focusing on the three points listed above. The lib's other hooks are built around the common practical use cases for `useExternalState()`.
 
 </details>
 
@@ -108,6 +108,8 @@ const ItemCard = ({ id }) => {
 
 ⬥ Use the optional `false` parameter in `useExternalState(state, false)` to tell the hook not to subscribe the component to tracking the external state updates altogether. A use case for it is when a component makes use of the external state value setter without using the state value itself. The `false` parameter could have been used in the `ResetButton` in the first example above, but in many cases with lightweight component renders it might be unnecessary, since React automatically skips updating the DOM when there are no changes.
 
+⬥ The `useExternalState()`'s render callback has a similar purpose to state selectors adopted by some state management libs to offer fine-grained control over re-renders. A subtle difference in these approaches is that with a render callback a single state subscription per component is required to filter out unnecessary re-renders, while state selectors require an individual subscription for each piece of state in a component.
+
 ### Integration with Immer
 
 Immer can be used with state setters returned from `useExternalState()` just the same way as [with `useState()`](https://immerjs.github.io/immer/example-setstate#usestate--immer) to facilitate deeply nested data changes.
@@ -162,9 +164,11 @@ const App = () => {
 
 ⬥ See also the [Type-safe routes](#type-safe-routes) section.
 
+⬥ Routing with `react-bridgestate` is based on the core idea behind all approaches to route-based rendering: conditional rendering based on the URL. Unlike component-, config-, or file-based approaches, the `react-bridgestate`'s imperative approach sticks to this core idea without additional abstraction layers and specific relations between routes (like layout nesting or parameter inheritance) offering full explicit control over route-based rendering.
+
 ### SPA navigation
 
-The SPA navigation API is largely aligned with the similar built-in APIs:
+The shape of the SPA navigation API is largely aligned with the similar built-in browser APIs (but still compatible with SSR):
 
 ```diff
 + import { A, useRoute } from "react-bridgestate";
@@ -252,7 +256,7 @@ const App = () => {
 
 ## useRouteState
 
-Use this hook to manage URL parameters as state in a `useState`-like manner. Use the React's state mental model and migrate from local state without major code rewrites:
+When it's necessary to put a portion of the app's state to the URL, use this hook to manage URL parameters as state in a `useState`-like manner. Use the React's state mental model and migrate from local state without major code rewrites:
 
 ```diff
 + import { useRouteState } from "react-bridgestate";
