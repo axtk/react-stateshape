@@ -89,7 +89,7 @@ const App = () => (
 
 ### Filtering state updates
 
-⬥ Use the optional second parameter of `useExternalState(state, callback)` as a render callback for fine-grained control over component's re-renders in response to state changes:
+⬥ One way of reducing re-renders in response to state changes is having multiple tightly scoped `State` instances in the app instead of having a larger chunk of disparate data in a single `State`. Yet another way is using the optional render callback of `useExternalState(state, callback)` for more fine-grained control over component's re-renders within a state subscription:
 
 ```js
 const itemState = new State({/* A map of `<id>: <item>` */});
@@ -108,7 +108,7 @@ const ItemCard = ({ id }) => {
 
 ⬥ Use the optional `false` parameter in `useExternalState(state, false)` to tell the hook not to subscribe the component to tracking the external state updates altogether. A use case for it is when a component makes use of the external state value setter without using the state value itself. The `false` parameter could have been used in the `ResetButton` in the first example above, but in many cases with lightweight component renders it might be unnecessary, since React automatically skips updating the DOM when there are no changes.
 
-⬥ The `useExternalState()`'s render callback has a similar purpose to state selectors adopted by some state management libs to offer fine-grained control over re-renders. A subtle difference in these approaches is that with a render callback a single state subscription per component is required to filter out unnecessary re-renders, while state selectors require an individual subscription for each piece of state in a component.
+⬥ Splitting the app data into multiple `State` instances and the `useExternalState()`'s render callback serve a similar purpose as state slices and selectors adopted by some state management libs to offer fine-grained control over re-renders. A subtle difference in these approaches is that the state splitting and the render callback are more imperative and explicit about the conditions of re-renders than the state slices and selectors.
 
 ### Integration with Immer
 
