@@ -1,4 +1,4 @@
-import type { NavigationOptions } from "bridgestate";
+import type { NavigationOptions } from "statepod";
 import { useContext } from "react";
 import type { RenderCallback } from "./types/RenderCallback.ts";
 import { URLContext } from "./URLContext.ts";

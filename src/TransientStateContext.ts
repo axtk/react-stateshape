@@ -1,4 +1,4 @@
-import type { State } from "bridgestate";
+import type { State } from "statepod";
 import { createContext } from "react";
 import type { TransientState } from "./types/TransientState.ts";
 

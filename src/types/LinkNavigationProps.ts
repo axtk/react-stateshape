@@ -1,4 +1,4 @@
-import type { NavigationOptions } from "bridgestate";
+import type { NavigationOptions } from "statepod";
 
 export type LinkNavigationProps = {
   "data-spa"?: NavigationOptions["spa"];

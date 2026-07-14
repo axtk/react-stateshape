@@ -1,5 +1,5 @@
 {
-  "name": "react-bridgestate",
+  "name": "react-statepod",
   "version": "0.3.5",
   "description": "A shared state management and routing lib for React apps",
   "main": "./dist/index.cjs",
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/axtk/react-bridgestate.git"
+    "url": "git+https://github.com/axtk/react-statepod.git"
   },
   "keywords": [
     "state",
@@ -44,6 +44,6 @@
     "zod": "^4.4.3"
   },
   "dependencies": {
-    "bridgestate": "^0.3.1"
+    "statepod": "^0.4.0"
   }
 }

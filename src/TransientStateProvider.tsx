@@ -1,4 +1,4 @@
-import { State } from "bridgestate";
+import { State } from "statepod";
 import { type ReactNode, useMemo, useRef } from "react";
 import { TransientStateContext } from "./TransientStateContext.ts";
 import type { TransientState } from "./types/TransientState.ts";

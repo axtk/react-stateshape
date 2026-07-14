@@ -1,4 +1,4 @@
-import { URLState } from "bridgestate";
+import { URLState } from "statepod";
 import { type ReactNode, useEffect, useMemo } from "react";
 import { URLContext } from "./URLContext.ts";
 

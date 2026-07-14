@@ -1,4 +1,4 @@
-import type { ContainerElement, Route } from "bridgestate";
+import type { ContainerElement, Route } from "statepod";
 import { type RefObject, useContext, useEffect } from "react";
 import { RouteContext } from "./RouteContext.ts";
 

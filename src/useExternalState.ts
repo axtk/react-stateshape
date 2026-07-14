@@ -1,4 +1,4 @@
-import { isState, type State, type StatePayloadMap } from "bridgestate";
+import { isState, type State, type StatePayloadMap } from "statepod";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { RenderCallback } from "./types/RenderCallback.ts";
 

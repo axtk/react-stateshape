@@ -1,4 +1,4 @@
-import type { EventCallback, NavigationOptions } from "bridgestate";
+import type { EventCallback, NavigationOptions } from "statepod";
 import { useContext, useEffect } from "react";
 import { RouteContext } from "./RouteContext.ts";
 
