@@ -1,5 +1,5 @@
-import { getNavigationOptions, isRouteEvent } from "statepod";
 import { type MouseEvent as ReactMouseEvent, useCallback } from "react";
+import { getNavigationOptions, isRouteEvent } from "statepod";
 import type { AProps } from "./types/AProps.ts";
 import type { AreaProps } from "./types/AreaProps.ts";
 import { useRoute } from "./useRoute.ts";

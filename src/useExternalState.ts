@@ -1,5 +1,5 @@
-import { isState, type State, type StatePayloadMap } from "statepod";
 import { useEffect, useMemo, useRef, useState } from "react";
+import { isState, type State, type StatePayloadMap } from "statepod";
 import type { RenderCallback } from "./types/RenderCallback.ts";
 
 export type SetExternalStateValue<

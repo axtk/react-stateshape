@@ -1,5 +1,5 @@
-import type { EventCallback, NavigationOptions } from "statepod";
 import { useContext, useEffect } from "react";
+import type { EventCallback, NavigationOptions } from "statepod";
 import { RouteContext } from "./RouteContext.ts";
 
 export function useNavigationComplete(

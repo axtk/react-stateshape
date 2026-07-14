@@ -1,5 +1,5 @@
-import { Route } from "statepod";
 import { type ReactNode, useEffect, useMemo } from "react";
+import { Route } from "statepod";
 import { RouteContext } from "./RouteContext.ts";
 
 export type RouteProviderProps = {

@@ -1,5 +1,5 @@
-import type { NavigationOptions } from "statepod";
 import { useContext } from "react";
+import type { NavigationOptions } from "statepod";
 import type { RenderCallback } from "./types/RenderCallback.ts";
 import { URLContext } from "./URLContext.ts";
 import { useExternalState } from "./useExternalState.ts";
