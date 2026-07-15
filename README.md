@@ -19,7 +19,7 @@ Apparently focusing on other aspects, **Redux Toolkit** and **MobX** don't fulfi
 
 With a useState-like API, **Jotai** is the closest match (points (1) and (2) fulfilled). Still, Jotai requires a workaround API, a special hook, to set up SSR<sup>[[3](https://jotai.org/docs/utilities/ssr)]</sup> (point (3) unmet). Also, subjectively, the Jotai's core `atom()` function with its elaborate capabilities is an overkill for state management that looks hard to tree-shake.
 
-The `useExternalState()` hook of `react-statepod` is an attempt to come up with a mostly self-explanatory lightweight useState-like approach to shared state management by focusing on the three points listed above. The lib's other hooks are built around the common practical use cases for `useExternalState()`.
+The `useExternalState()` hook of `react-statepod` is an attempt to come up with a mostly self-explanatory lightweight useState-like approach to shared state management by focusing on the three points listed above. The lib's other hooks are built around the common practical use cases for `useExternalState()`. Whatever unused is tree-shakable.
 
 </details>
 
