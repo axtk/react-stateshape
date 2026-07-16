@@ -3,9 +3,9 @@
 A shared state management and routing lib for React apps. Under the hood, routing is shared state management, too, with the shared data being the URL.
 
 <details>
-<summary>Why think of another state management lib and how it compares to others</summary><br>
+<summary><strong>Motivation and comparison</strong></summary><br>
 
-With several options available, state management in React apps still feels more cumbersome than it could be. With the React's local state mental model in mind, we might expect that a shared state management lib—
+With several options available, state management in React apps still feels more cumbersome than it could be. With the React's local state mental model in mind, we might expect that a shared state management lib
 
 (1) has a simple API introducing a minimal set of entities,<br>
 (2) requires minimal changes to move local state to shared state,<br>
