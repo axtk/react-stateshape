@@ -66,6 +66,8 @@ Move local state to the full-fledged shared state with minimal paradigm shift an
 With SSR, it's common practice to put shared values into React Context rather than module-level variables to avoid cross-request data sharing. The same applies to external state. Provide external state to multiple components via React Context like any data in a React app:
 
 ```diff
++ import { createContext, useContext } from "react";
+
 - const counterState = new State(0);
 + const AppContext = createContext(new State(0));
 ```
